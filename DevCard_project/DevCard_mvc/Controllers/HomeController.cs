@@ -1,7 +1,8 @@
+using System.Collections.Generic;
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using DevCard_mvc.Models;
-
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace DevCard_mvc.Controllers
 {
@@ -30,11 +31,25 @@ namespace DevCard_mvc.Controllers
         //}
 
 
+        //[HttpPost]
+        //public JsonResult Contact(Contact form) 
+        //{
+        //    Console.WriteLine(form.ToString());
+        //    return Json(Ok());
+        //}
+
         [HttpPost]
-        public JsonResult Contact(Contact form) 
+        public IActionResult Contact(Contact model) 
         {
-            Console.WriteLine(form.ToString());
-            return Json(Ok());
+            //if(ModelState.IsValid == false)
+            if (!ModelState.IsValid)
+                {
+                ViewBag.error = "??????? ???? ??? ???? ????. ???? ?????? ???? ????";
+                return View(model);
+            }
+            ViewBag.success = "????? ??? ?? ?????? ????? ??. ??????";
+            return View(model);
+            //return RedirectToAction("Index");
         }
 
 
