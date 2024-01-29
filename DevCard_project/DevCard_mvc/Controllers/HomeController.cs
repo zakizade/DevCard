@@ -1,22 +1,47 @@
-using DevCard_mvc.Models;
-using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
+using Microsoft.AspNetCore.Mvc;
+using DevCard_mvc.Models;
+
 
 namespace DevCard_mvc.Controllers
 {
     public class HomeController : Controller
     {
-       
-
+               
         public IActionResult Index()
         {
             return View();
         }
 
-        public IActionResult Contact()
+
+		[HttpGet]
+		public IActionResult Contact()
         {
-            return View();
+            var model = new Contact();
+            return View(model);
         }
+
+
+        //[HttpPost]
+        //public JsonResult Contact(IFormCollection form)
+        //{
+        //    var name = form["name"];    
+        //return Json(Ok());
+        //}
+
+
+        [HttpPost]
+        public JsonResult Contact(Contact form) 
+        {
+            Console.WriteLine(form.ToString());
+            return Json(Ok());
+        }
+
+
+
+
+
+
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
