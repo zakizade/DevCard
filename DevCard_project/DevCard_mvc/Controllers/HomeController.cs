@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using DevCard_mvc.Models;
@@ -44,10 +44,10 @@ namespace DevCard_mvc.Controllers
             //if(ModelState.IsValid == false)
             if (!ModelState.IsValid)
                 {
-                ViewBag.error = "??????? ???? ??? ???? ????. ???? ?????? ???? ????";
+                ViewBag.error = "اطلاعات وارد شده صحیح نیست لطفا دوباره تلاش کنید،باتشکر";
                 return View(model);
             }
-            ViewBag.success = "????? ??? ?? ?????? ????? ??. ??????";
+            ViewBag.success = "پیغام شما با موفقیت ارسال شد";
             return View(model);
             //return RedirectToAction("Index");
         }
